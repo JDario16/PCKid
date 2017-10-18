@@ -1,11 +1,9 @@
 ﻿<Properties StartupItem="PCKid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlsSC.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlCharacter.cs">
     <Files>
-      <File FileName="Assets\Scripts\AspectUtility.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ControlCharacter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\WallDestructor.cs" Line="18" Column="37" />
-      <File FileName="Assets\Scripts\ControlsSC.cs" Line="28" Column="99" />
+      <File FileName="Assets\Scripts\WallDestructor.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
