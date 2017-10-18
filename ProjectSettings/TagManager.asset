@@ -7,6 +7,10 @@ TagManager:
   - Izq
   - Der
   - Ava
+  - Ins1
+  - Ins2
+  - Ins3
+  - Ins4
   layers:
   - Default
   - TransparentFX

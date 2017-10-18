@@ -5,7 +5,10 @@ using UnityEngine;
 public class ControlCharacter : MonoBehaviour {
 	//Declaraciones
 	public float velocidad;
-
+    private bool izquierda = false, arriba = false, abajo = false, derecha = true;
+    private int cont = 0, movX, movY;
+    private GameObject[] objects = new GameObject[4];
+    private string[] cadenas = new string[4];
 	// Use this for initialization
 	void Start () {
 		
@@ -37,4 +40,29 @@ public class ControlCharacter : MonoBehaviour {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-velocidad, GetComponent<Rigidbody2D>	().velocity.y);
 		} 
 	}
+    private void movimiento() {
+        cont = 0;
+
+        while (cont < 4) {
+            if (cadenas[cont] == "adelante")
+            {
+
+            }
+            else if (cadenas[cont] == "derecha")
+            {
+
+            }
+            else if(cadenas[cont]=="izquierda"){
+               
+            }
+        }
+    }
+
+    void getObjects()
+    {
+        while (cont<4) {
+            objects[cont] = GameObject.Find("Instruccion"+(cont+1));
+            cadenas[cont] = objects[cont].GetComponent<DropMe>().test;
+        }
+    }
 }
