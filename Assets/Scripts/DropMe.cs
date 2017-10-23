@@ -2,12 +2,10 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System;
-using System.Collections.Generic;
 
 public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    List<string> test=new List<string>();
+    public string test;
 	public Image containerImage;
 	public Image receivingImage;
 	private Color normalColor;

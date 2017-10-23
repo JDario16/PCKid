@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlCharacter : MonoBehaviour {
-    //Declaraciones
-    public float velocidad, movX = 1f, movY = 0f;
+	//Declaraciones
+	public float velocidad, movX=100.0f, movY=0.0f;
     private bool izquierda = false, arriba = false, abajo = false, derecha = true;
     private int cont = 0;
     private int concat = 1;
-    private int pasos = 0;
     private GameObject[] objects = new GameObject[4];
     private string[] cadenas = new string[4];
-    private Rigidbody2D rgd2;
-	//Use this for initialization
+	/*// Use this for initialization
 	void Start () {
-        rgd2 = GetComponent<Rigidbody2D>();
+		
 	}
-	/*
+	
 	// Update is called once per frame
 	void Update () {
 		//Arriba
@@ -43,50 +41,45 @@ public class ControlCharacter : MonoBehaviour {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-velocidad, GetComponent<Rigidbody2D>	().velocity.y);
 		} 
 	}*/
-    public void Movimiento() {
+    public void movimiento() {
         
         getObjects();
         cont = 0;
         while (cont < 4) {
             if (cadenas[cont] == "adelante")
             {
-                while (pasos < 100) {
-                    transform.position += new Vector3(movX, movY,0) ;
-                    //rgd2.AddForce(Vector2.right * movX);
-                    StartCoroutine(retardo());
-                    Debug.Log("Moviendo");
-                  pasos++;
-                }
+                transform.Translate(movX, movY, 479.1f);
+                Debug.Log("Moviendo");
             }
             else if (cadenas[cont] == "derecha")
             {
                 if (abajo==true)
                 {
-                    movX = -1f;
-                    movY = 0f;
+                    movX = -100.0f;
+                    movY = 0.0f;
 
                     izquierda = true;
                     abajo = false;
                 }
                 if (izquierda == true) {
 
-                    movX = 0f;
-                    movY = 1f;
+                    movX = 0.0f;
+                    movY = 100.0f;
 
                     arriba = true;
                     izquierda = false;
                 }
                 if (arriba == true)
                 {
-                    movX = 1f;
-                    movY = 0f;
+                    movX = 100.0f;
+                    movY = 0.0f;
 
                     derecha = true;
                     arriba = false;
                 }
                 if (derecha == true) {
-                    movX = 0f;
-                    movY = -1f;
+                    movX = 0.0f;
+                    movY = -100.0f;
 
                     abajo = true;
                     derecha = false;
@@ -96,8 +89,8 @@ public class ControlCharacter : MonoBehaviour {
             else if(cadenas[cont]=="izquierda"){
                 if (abajo == true)
                 {
-                    movX = 1f;
-                    movY = 0f;
+                    movX = 100.0f;
+                    movY = 0.0f;
 
                     derecha = true;
                     abajo = false;
@@ -105,24 +98,24 @@ public class ControlCharacter : MonoBehaviour {
                 if (derecha == true)
                 {
 
-                    movX = 0f;
-                    movY = 1f;
+                    movX = 0.0f;
+                    movY = 100.0f;
 
                     arriba = true;
                     derecha = false;
                 }
                 if (arriba == true)
                 {
-                    movX = -1f;
-                    movY = 0f;
+                    movX = -100.0f;
+                    movY = 0.0f;
 
                     izquierda = true;
                     arriba = false;
                 }
                 if (izquierda == true)
                 {
-                    movX = 0f;
-                    movY = -1f;
+                    movX = 0.0f;
+                    movY = -100.0f;
 
                     abajo = true;
                     izquierda = false;
@@ -144,10 +137,5 @@ public class ControlCharacter : MonoBehaviour {
             cont++;
             concat++;
         }
-    }
-
-    IEnumerator retardo() {
-        yield return new WaitForSeconds(1f);
-        yield break;
     }
 }
