@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 	public Image containerImage;
 	public Image receivingImage;
 	private Color normalColor;
+    public List<string> instrucciones = new List<string>();
 	public Color highlightColor = Color.yellow;
 	
 	public void OnEnable ()
@@ -28,6 +30,7 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			receivingImage.overrideSprite = dropSprite;
+        instrucciones.Add(instru);
         test = instru;
 	}
 

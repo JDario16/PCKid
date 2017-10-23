@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ControlCharacter : MonoBehaviour {
 	//Declaraciones
@@ -10,7 +11,8 @@ public class ControlCharacter : MonoBehaviour {
     private int concat = 1;
     private GameObject[] objects = new GameObject[4];
     private string[] cadenas = new string[4];
-	/*// Use this for initialization
+   
+    /*// Use this for initialization
 	void Start () {
 		
 	}
@@ -42,16 +44,16 @@ public class ControlCharacter : MonoBehaviour {
 		} 
 	}*/
     public void movimiento() {
-        
+        List<string> movimientos = GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones;
         getObjects();
         cont = 0;
-        while (cont < 4) {
-            if (cadenas[cont] == "adelante")
+        while (cont < movimientos.Count) {
+            if (movimientos[cont] == "adelante")
             {
                 transform.Translate(movX, movY, 479.1f);
                 Debug.Log("Moviendo");
             }
-            else if (cadenas[cont] == "derecha")
+            else if (movimientos[cont] == "derecha")
             {
                 if (abajo==true)
                 {
@@ -86,7 +88,7 @@ public class ControlCharacter : MonoBehaviour {
                 }
                 
             }
-            else if(cadenas[cont]=="izquierda"){
+            else if(movimientos[cont]=="izquierda"){
                 if (abajo == true)
                 {
                     movX = 100.0f;
@@ -128,14 +130,11 @@ public class ControlCharacter : MonoBehaviour {
 
     void getObjects()
     {
-        while (cont<4) {
+        while (cont< GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count) {
             Debug.Log("Estoy aqui");
-            objects[cont] = GameObject.Find("Instruccion"+concat.ToString());
-            
-            cadenas[cont] = objects[cont].GetComponent<DropMe>().test;
-            Debug.Log(cadenas[cont]);
+            cadenas[cont] = GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones[cont];
+            Debug.Log(GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count);
             cont++;
-            concat++;
         }
     }
 }
