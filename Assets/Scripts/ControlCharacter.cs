@@ -5,136 +5,126 @@ using System;
 
 public class ControlCharacter : MonoBehaviour {
 	//Declaraciones
-	public float velocidad, movX=100.0f, movY=0.0f;
+
+	public float velocidad, movX=1/100, movY=0, despla = 10;
     private bool izquierda = false, arriba = false, abajo = false, derecha = true;
     private int cont = 0;
-    private int concat = 1;
+    private int totalSec = 0;
+    private int i = 0;
+    private int seg = 100;
     private GameObject[] objects = new GameObject[4];
-    private string[] cadenas = new string[4];
-   
-    /*// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		//Arriba
-		GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+    private List<string> cadenas;
 
-		if (Input.GetKey(KeyCode.W)) {
-			//transform.Translate (new Vector2 (GetComponent<Rigidbody2D>	().velocity.x, velocidad));
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>	().velocity.x, velocidad);
-		} 
+    public void Start()
+    {
+        StartCoroutine(moving());
+       
+    }
 
-		//Abajo
-		if(Input.GetKey(KeyCode.S)){
-			//transform.Translate (new Vector2 (GetComponent<Rigidbody2D>	().velocity.x, -velocidad));
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>	().velocity.x, -velocidad);
-		} 
-		//Derecha
-		if(Input.GetKey(KeyCode.D)){
-			//transform.Translate (new Vector2 (velocidad, GetComponent<Rigidbody2D>	().velocity.y));
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (velocidad, GetComponent<Rigidbody2D>	().velocity.y);
-		} 
-		//Izquierda
-		if(Input.GetKey(KeyCode.A)){
-			//transform.Translate (new Vector2 (-velocidad, GetComponent<Rigidbody2D>	().velocity.y));
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-velocidad, GetComponent<Rigidbody2D>	().velocity.y);
-		} 
-	}*/
-    public void movimiento() {
+    void Update()
+    {
+        
+    }
+
+    /*void getObjects()
+    {
+        while (cont< GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count) {
+            cadenas.Add(GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones[cont]);
+            Debug.Log(GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count);
+            cont++;
+        }
+    }*/
+
+    IEnumerator moving() {
+
         List<string> movimientos = GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones;
-        getObjects();
+        
+        //getObjects();
         cont = 0;
-        while (cont < movimientos.Count) {
-            if (movimientos[cont] == "adelante")
-            {
-                transform.Translate(movX, movY, 479.1f);
-                Debug.Log("Moviendo");
-            }
-            else if (movimientos[cont] == "derecha")
-            {
-                if (abajo==true)
-                {
-                    movX = -100.0f;
-                    movY = 0.0f;
 
+
+        while (cont < movimientos.Count)
+        {
+            Debug.Log(movimientos[cont]);
+            //Debug.Log(cadenas[cont]);
+            
+            if (movimientos[cont] == "derecha")
+            {
+                Debug.Log("Hola");
+                if (abajo == true)
+                {
                     izquierda = true;
                     abajo = false;
                 }
-                if (izquierda == true) {
-
-                    movX = 0.0f;
-                    movY = 100.0f;
-
+                if (izquierda == true)
+                {
                     arriba = true;
                     izquierda = false;
                 }
                 if (arriba == true)
                 {
-                    movX = 100.0f;
-                    movY = 0.0f;
-
                     derecha = true;
                     arriba = false;
                 }
-                if (derecha == true) {
-                    movX = 0.0f;
-                    movY = -100.0f;
-
+                if (derecha == true)
+                {
                     abajo = true;
                     derecha = false;
                 }
-                
+
             }
-            else if(movimientos[cont]=="izquierda"){
+            else if (movimientos[cont] == "izquierda")
+            {
                 if (abajo == true)
                 {
-                    movX = 100.0f;
-                    movY = 0.0f;
-
                     derecha = true;
                     abajo = false;
                 }
                 if (derecha == true)
                 {
-
-                    movX = 0.0f;
-                    movY = 100.0f;
-
                     arriba = true;
                     derecha = false;
                 }
                 if (arriba == true)
                 {
-                    movX = -100.0f;
-                    movY = 0.0f;
-
                     izquierda = true;
                     arriba = false;
                 }
                 if (izquierda == true)
                 {
-                    movX = 0.0f;
-                    movY = -100.0f;
-
                     abajo = true;
                     izquierda = false;
                 }
+            } else if (movimientos[cont] == "adelante")
+            {
+                for (int i = 0; i < seg; i++)
+                {
+                    //transform.position += new Vector3(movX / 100, movY / 100, 0);
+                    
+                    
+                    Debug.Log("Moviendo");
+                    if (abajo == true)
+                    {
+                        transform.position += Vector3.down;
+                    }
+                    if (derecha == true)
+                    {
+                        transform.position += Vector3.right;
+                    }
+                    if (arriba == true)
+                    {
+                        transform.position += Vector3.up;
+                    }
+                    if (izquierda == true)
+                    {
+                        transform.position += Vector3.right;
+                    }
+                    yield return new WaitForSeconds(0.01f);
+                }
             }
-            Debug.Log(cadenas[cont]);
+
             cont++;
         }
     }
 
-    void getObjects()
-    {
-        while (cont< GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count) {
-            Debug.Log("Estoy aqui");
-            cadenas[cont] = GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones[cont];
-            Debug.Log(GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count);
-            cont++;
-        }
-    }
 }

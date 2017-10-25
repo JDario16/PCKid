@@ -16,7 +16,7 @@ public class WallDestructor : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Player") {
-			Destroy(coll.gameObject);
+            GameObject.Find("Pacman").GetComponent<ControlCharacter>().StopAllCoroutines();
 		}
 	}
 }
