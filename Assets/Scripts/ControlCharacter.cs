@@ -51,22 +51,22 @@ public class ControlCharacter : MonoBehaviour {
             if (movimientos[cont] == "derecha")
             {
                 Debug.Log("Hola");
-                if (abajo == true)
+                if (abajo)
                 {
                     izquierda = true;
                     abajo = false;
-                }
-                if (izquierda == true)
+                }else
+                if (izquierda)
                 {
                     arriba = true;
                     izquierda = false;
-                }
-                if (arriba == true)
+                }else
+                if (arriba)
                 {
                     derecha = true;
                     arriba = false;
-                }
-                if (derecha == true)
+                }else
+                if (derecha)
                 {
                     abajo = true;
                     derecha = false;
@@ -75,22 +75,22 @@ public class ControlCharacter : MonoBehaviour {
             }
             else if (movimientos[cont] == "izquierda")
             {
-                if (abajo == true)
+                if (abajo)
                 {
                     derecha = true;
                     abajo = false;
-                }
-                if (derecha == true)
+                }else
+                if (derecha)
                 {
                     arriba = true;
                     derecha = false;
-                }
-                if (arriba == true)
+                }else
+                if (arriba)
                 {
                     izquierda = true;
                     arriba = false;
-                }
-                if (izquierda == true)
+                }else
+                if (izquierda)
                 {
                     abajo = true;
                     izquierda = false;
@@ -103,21 +103,23 @@ public class ControlCharacter : MonoBehaviour {
                     
                     
                     Debug.Log("Moviendo");
-                    if (abajo == true)
+                    if (abajo)
                     {
+                        Debug.Log("Bajando");
                         transform.position += Vector3.down;
-                    }
-                    if (derecha == true)
+                    }else
+                    if (derecha)
                     {
                         transform.position += Vector3.right;
-                    }
-                    if (arriba == true)
+                    }else
+                    if (arriba)
                     {
                         transform.position += Vector3.up;
-                    }
-                    if (izquierda == true)
+                        Debug.Log("Aqui");
+                    }else
+                    if (izquierda)
                     {
-                        transform.position += Vector3.right;
+                        transform.position += Vector3.left;
                     }
                     yield return new WaitForSeconds(0.01f);
                 }
