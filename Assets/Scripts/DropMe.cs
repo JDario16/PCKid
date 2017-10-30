@@ -6,12 +6,18 @@ using UnityEngine.UI;
 
 public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public string test;
+    int conx = 0;
+    int cony = 0;
+    int conh = 0;
+    int con = 0;
+    float x = -100f;
+    float y = 160f;
 	public Image containerImage;
 	public Image receivingImage;
 	private Color normalColor;
     public List<string> instrucciones = new List<string>();
 	public Color highlightColor = Color.yellow;
+    instanciar crear = new instanciar();
 	
 	public void OnEnable ()
 	{
@@ -21,17 +27,44 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 	
 	public void OnDrop(PointerEventData data)
 	{
-		//containerImage.color = normalColor;
-		
-		if (receivingImage == null)
-			return;
+        if (con < 16)
+        {
+            if (receivingImage == null)
+                return;
 
-        string instru = GetDropString(data);
-		Sprite dropSprite = GetDropSprite (data);
-		if (dropSprite != null)
-			receivingImage.overrideSprite = dropSprite;
-        instrucciones.Add(instru);
-        test = instru;
+            string instru = GetDropString(data);
+            if (conx < 6 && x < 200f)
+            {
+                conx++;
+                x = x + 100f;
+            }
+            else if (conh < 1)
+            {
+                Debug.Log("estoy aqui");
+                y = y - 100f;
+                x = 0f;
+                conh++;
+                conx = 0;
+            }
+            else
+            {
+                y = y - 100f;
+                x = -200f;
+                conx = 0;
+            }
+            crear.Crear(x, y, instru);
+            Sprite dropSprite = GetDropSprite(data);
+            if (dropSprite != null)
+                receivingImage.overrideSprite = dropSprite;
+            instrucciones.Add(instru);
+
+            con++;
+        }
+        else {
+
+        }
+		
+		
 	}
 
 	public void OnPointerEnter(PointerEventData data)
