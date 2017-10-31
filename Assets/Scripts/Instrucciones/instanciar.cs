@@ -17,14 +17,14 @@ public class instanciar : MonoBehaviour {
         instrucciones = GameObject.Find("Instrucciones");
         if (instruction == "adelante")
         {
-            invocar.Add(Instantiate(Resources.Load("Prefabs/Adelante")) as GameObject);
+            invocar.Add(Instantiate(Resources.Load("Prefabs/Instrucciones/Adelante")) as GameObject);
         }
         else if (instruction == "izquierda")
         {
-            invocar.Add(Instantiate(Resources.Load("Prefabs/GirarIzquierda")) as GameObject);
+            invocar.Add(Instantiate(Resources.Load("Prefabs/Instrucciones/GirarDerecha")) as GameObject);
         }
         else if (instruction == "derecha") {
-            invocar.Add(Instantiate(Resources.Load("Prefabs/GirarDerecha")) as GameObject);
+            invocar.Add(Instantiate(Resources.Load("Prefabs/Instrucciones/GirarIzquierda")) as GameObject);
         }
         
         invocar[con].transform.parent    = GameObject.Find("Instrucciones").transform;
