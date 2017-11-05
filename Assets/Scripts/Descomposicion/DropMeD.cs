@@ -13,6 +13,7 @@ public class DropMeD : MonoBehaviour, IDropHandler
     float x = -275f;
     float y = 140f;
     public List<string> colores = new List<string>();
+	public Color highlightColor = Color.yellow;
     instanciarD crear = new instanciarD();
 	
 	public void OnEnable ()

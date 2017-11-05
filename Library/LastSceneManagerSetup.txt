@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Descomposicion/11.unity
+- path: Assets/Scenes/Instrucciones/11.unity
   isLoaded: 1
   isActive: 1
