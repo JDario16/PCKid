@@ -14,7 +14,7 @@ public class instanciarD : MonoBehaviour {
     }
 
     public void CrearD(float x, float y, string color2) {
-        instrucciones = GameObject.Find("Instrucciones");
+        instrucciones = GameObject.Find("Recipientes");
         if (color2 == "red")
         {
             invocar.Add(Instantiate(Resources.Load("Prefabs/Descomposicion/RedBox")) as GameObject);
@@ -27,8 +27,7 @@ public class instanciarD : MonoBehaviour {
             invocar.Add(Instantiate(Resources.Load("Prefabs/Descomposicion/YellowBox")) as GameObject);
         }
         
-        invocar[con].transform.parent    = GameObject.Find("Instrucciones").transform;
-        Debug.Log(instrucciones.GetComponent<RectTransform>().anchoredPosition);
+        invocar[con].transform.parent    = GameObject.Find("Recipientes").transform;
         invocar[con].transform.localPosition = instrucciones.GetComponent<RectTransform>().anchoredPosition3D;
         invocar[con].transform.position += new Vector3(x, y, 0) * 1.783441790744985f;
         invocar[con].transform.localScale = new Vector3(1f, 1f, 1f);

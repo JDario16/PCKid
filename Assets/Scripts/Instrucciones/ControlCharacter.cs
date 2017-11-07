@@ -4,13 +4,9 @@ using UnityEngine;
 using System;
 
 public class ControlCharacter : MonoBehaviour {
-	//Declaraciones
-
-	public float velocidad, movX=1/100, movY=0, despla = 10;
+	public float velocidad;
     private bool izquierda = false, arriba = false, abajo = false, derecha = true;
     private int cont = 0;
-    private int totalSec = 0;
-    private int i = 0;
     private int seg = 100;
     private GameObject[] objects = new GameObject[4];
     private List<string> cadenas;
@@ -21,36 +17,16 @@ public class ControlCharacter : MonoBehaviour {
        
     }
 
-    void Update()
-    {
-        
-    }
-
-    /*void getObjects()
-    {
-        while (cont< GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count) {
-            cadenas.Add(GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones[cont]);
-            Debug.Log(GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones.Count);
-            cont++;
-        }
-    }*/
-
     IEnumerator moving() {
 
-        List<string> movimientos = GameObject.Find("Instruccion1").GetComponent<DropMe>().instrucciones;
-        
-        //getObjects();
+        List<string> movimientos = GameObject.Find("Instrucciones").GetComponent<DropMe>().instrucciones;
         cont = 0;
-
 
         while (cont < movimientos.Count)
         {
-            Debug.Log(movimientos[cont]);
-            //Debug.Log(cadenas[cont]);
             
             if (movimientos[cont] == "derecha")
             {
-                Debug.Log("Hola");
                 if (abajo)
                 {
                     izquierda = true;
@@ -99,13 +75,8 @@ public class ControlCharacter : MonoBehaviour {
             {
                 for (int i = 0; i < seg; i++)
                 {
-                    //transform.position += new Vector3(movX / 100, movY / 100, 0);
-                    
-                    
-                    Debug.Log("Moviendo");
                     if (abajo)
                     {
-                        Debug.Log("Bajando");
                         transform.position += Vector3.down;
                     }else
                     if (derecha)
@@ -115,7 +86,6 @@ public class ControlCharacter : MonoBehaviour {
                     if (arriba)
                     {
                         transform.position += Vector3.up;
-                        Debug.Log("Aqui");
                     }else
                     if (izquierda)
                     {

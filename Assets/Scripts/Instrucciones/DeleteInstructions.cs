@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartButton : MonoBehaviour {
-    private bool izquierda=false, arriba=false, abajo=false, derecha = true;
+public class DeleteInstructions : MonoBehaviour {
+
 	// Use this for initialization
 	void Start () {
 		
