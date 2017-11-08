@@ -225,6 +225,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Abstraccion\DragMeA.cs" />
+    <Compile Include="Assets\Scripts\Abstraccion\DropMeA.cs" />
+    <Compile Include="Assets\Scripts\Abstraccion\instanciarA.cs" />
     <Compile Include="Assets\Scripts\Descomposicion\ColorVaseD.cs" />
     <Compile Include="Assets\Scripts\Descomposicion\DragMeD.cs" />
     <Compile Include="Assets\Scripts\Descomposicion\DropMeD.cs" />
@@ -235,7 +238,13 @@
     <Compile Include="Assets\Scripts\Instrucciones\DropMe.cs" />
     <Compile Include="Assets\Scripts\Instrucciones\instanciar.cs" />
     <Compile Include="Assets\Scripts\Instrucciones\WallDestructor.cs" />
+    <Compile Include="Assets\Scripts\Patrones\DragMeP.cs" />
+    <Compile Include="Assets\Scripts\Patrones\DropMeP.cs" />
+    <Compile Include="Assets\Scripts\Patrones\instanciarP.cs" />
     <Compile Include="Packages\com.unity.xiaomi@1.0.0\UnityChannel\XiaomiSupport\AppStoreSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
