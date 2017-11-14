@@ -13,7 +13,7 @@ public class WallDestructor : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    /*Funcion que sirve para detectar si el personaje choca contra la pared, haciendo aparecer el menu de gameover*/
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Player") {
             GameObject.Find("Pacman").GetComponent<ControlCharacter>().StopAllCoroutines();

@@ -10,12 +10,12 @@ public class ColorVaseD : MonoBehaviour {
     private Vector4 red = new Vector4(1f, 0f, 0f, 1f);
     private Vector4 yellow = new Vector4(0f, 1f, 0f, 1f);
     private Vector4 blue = new Vector4(0f, 0f, 1f, 1f);
-    
     private Vector4 cal = new Vector4(0f, 0f, 0f, 0f);
     GameObject Vaso;
     private int con = 0;
     private GameObject fondo;
 
+    /*Funcion que suma los colores ingresados y los promedia para despues colorear el vaso*/
     public void coloring() {
 
         Vaso = GameObject.Find("Vaso");
@@ -48,7 +48,23 @@ public class ColorVaseD : MonoBehaviour {
         cal = new Vector4(0f,0f,0f,0f);
         con = 0;
     }
-
+    /*Funcion que transforma el estandar rgb a ryb para poder cumplir asi el sistema de coloreamiento
+     * Given a RYB color, calculate the RGB color.  This code was taken from:
+	 * 
+	 * @param iRed     The current red value.
+	 * @param iYellow  The current yellow value.
+	 * @param iBlue    The current blue value.
+	 * 
+	 * http://www.insanit.net/tag/rgb-to-ryb/
+	 * 
+	 * Author: Arah J. Leonard
+	 * Copyright 01AUG09
+	 * Distributed under the LGPL - http://www.gnu.org/copyleft/lesser.html
+	 * ALSO distributed under the The MIT License from the Open Source Initiative (OSI) - 
+	 * http://www.opensource.org/licenses/mit-license.php
+	 * You may use EITHER of these licenses to work with / distribute this source code.
+	 * Enjoy!
+     */
     private Vector4 RybToRgb(float iRed, float iYellow, float iBlue, float iAlpha) {
         float iWhite = Math.Min(iRed,Math.Min(iYellow,iBlue));
 

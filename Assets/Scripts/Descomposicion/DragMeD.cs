@@ -2,7 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+/**********************************************************************************************
+	 * Unity Sample
+	 * 
+	 * https://www.assetstore.unity3d.com/en/#!/content/25468
+	 * 
+	 * Author: Unity Technology
+	 */
 [RequireComponent(typeof(Image))]
 public class DragMeD : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {

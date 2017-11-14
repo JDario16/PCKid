@@ -2,15 +2,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+/**********************************************************************************************
+	 * Unity Sample
+	 * 
+	 * https://www.assetstore.unity3d.com/en/#!/content/25468
+	 * 
+	 * Author: Unity Technology
+	 */
 [RequireComponent(typeof(Image))]
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	public bool dragOnSurfaces = true;
 
-    public string instruction;
-	
-	private Dictionary<int,GameObject> m_DraggingIcons = new Dictionary<int, GameObject>();
+    public string instruction;//Esta variable sirve para que el objeto al que se hace drag tenga un nombre dado en el editor de unity
+
+    private Dictionary<int,GameObject> m_DraggingIcons = new Dictionary<int, GameObject>();
 	private Dictionary<int, RectTransform> m_DraggingPlanes = new Dictionary<int, RectTransform>();
 
 	public void OnBeginDrag(PointerEventData eventData)

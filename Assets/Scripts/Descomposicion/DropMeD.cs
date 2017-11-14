@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class DropMeD : MonoBehaviour, IDropHandler
 {
-    int conx = 0;
-    int cony = 0;
-    int conh = 0;
     int con = 0;
+    /*Las variables "x" y "y" sirven para dar una posicion inicial al objeto cuando
+     es instanciado por el metodo CrearA*/
     float x = -275f;
     float y = 140f;
     public List<string> colores = new List<string>();
@@ -22,21 +21,22 @@ public class DropMeD : MonoBehaviour, IDropHandler
 	
 	public void OnDrop(PointerEventData data)
 	{
+        /*La siguiente condición indica cuantos objetos podran hacer drop y ser instanciados,
+         aqui mismo se indica la posicion de cada nuevo objeto*/
         if (con < 15)
         {
             
             string col = GetDropString(data);
-            if (conx < 5 && x < 175f)
+            if (x < 175f)
             {
-                conx++;
                 x = x + 90f;
             }
             else
             {
                 y = y - 110f;
                 x = -185f;
-                conx = 0;
             }
+            //Funcion que ayuda a instanciar los valores que se le es dado al drop
             crear.CrearD(x, y, col);
             colores.Add(col);
 
@@ -66,6 +66,7 @@ public class DropMeD : MonoBehaviour, IDropHandler
 		return srcImage.sprite;
 	}
 
+    //Funcion que sirve para obtener el nombre del objeto que viene del drag
     private string GetDropString(PointerEventData data)
     {
         var originalObj = data.pointerDrag;

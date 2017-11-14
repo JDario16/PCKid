@@ -8,15 +8,13 @@ public class ControlCharacter : MonoBehaviour {
     private bool izquierda = false, arriba = false, abajo = false, derecha = true;
     private int cont = 0;
     private int seg = 100;
-    private GameObject[] objects = new GameObject[4];
-    private List<string> cadenas;
 
     public void Start()
     {
         StartCoroutine(moving());
        
     }
-
+    /*Funcion que lee las instrucciones ingresadas y las ejecuta una vez presionado el boton de inicio*/
     IEnumerator moving() {
 
         List<string> movimientos = GameObject.Find("Instrucciones").GetComponent<DropMe>().instrucciones;
@@ -73,6 +71,7 @@ public class ControlCharacter : MonoBehaviour {
                 }
             } else if (movimientos[cont] == "adelante")
             {
+                /*For que ayuda a que el personaje se mueva de forma fluida gracias al delay que ofrece*/
                 for (int i = 0; i < seg; i++)
                 {
                     if (abajo)
