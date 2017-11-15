@@ -11,13 +11,14 @@ public class ColorVaseD : MonoBehaviour {
     private Vector4 yellow = new Vector4(0f, 1f, 0f, 1f);
     private Vector4 blue = new Vector4(0f, 0f, 1f, 1f);
     private Vector4 cal = new Vector4(0f, 0f, 0f, 0f);
+    private Color vaseColor;
     GameObject Vaso;
     private int con = 0;
     private GameObject fondo;
 
     /*Funcion que suma los colores ingresados y los promedia para despues colorear el vaso*/
     public void coloring() {
-
+        Debug.Log("Press");
         Vaso = GameObject.Find("Vaso");
         Color check = Vaso.GetComponent<Image>().color;
         fondo = GameObject.Find("Fondo");
@@ -25,26 +26,30 @@ public class ColorVaseD : MonoBehaviour {
         while (con<colours.Count) {
             if (colours[con] == "red")
             {
-                //if (con == 0)
                     cal = red + cal;
-                //else cal = (red + cal) / 2;
             }
             else if (colours[con] == "yellow")
             {
-                //if (con == 0)
                     cal = yellow + cal;
-                //else cal = (yellow + cal) / 2;
             }
             else if (colours[con] == "blue"){
-                //if (con == 0)
                     cal = blue + cal;
-                //else cal = (blue + cal) / 2;
             }
             con++;
         }
         
-        cal = cal/colours.Count; 
+        cal = cal/colours.Count;
         fondo.GetComponent<SpriteRenderer>().color = RybToRgb(cal[0],cal[1],cal[2],cal[3]);
+        vaseColor = RybToRgb(cal[0], cal[1], cal[2], cal[3]);
+        Debug.Log(vaseColor);
+        Debug.Log(GameObject.Find("Vaso").GetComponent<Image>().color);
+        if (vaseColor == GameObject.Find("Vaso").GetComponent<Image>().color) {
+            Debug.Log("Aqui estoy");
+            GameObject.Find("CameraGameOver").GetComponent<CameraGameOver>().CameraChange(1);
+        } else{
+            Debug.Log("Aqui estoy mal");
+            GameObject.Find("CameraGameOver").GetComponent<CameraGameOver>().CameraChange(0);
+        }
         cal = new Vector4(0f,0f,0f,0f);
         con = 0;
     }
@@ -109,7 +114,7 @@ public class ColorVaseD : MonoBehaviour {
 
 
 
-        return new Vector4(iRed, iGreen, iBlue, iAlpha)*2f;
+        return new Vector4(iRed, iGreen, iBlue, iAlpha/2)*2f;
     }
 
 }

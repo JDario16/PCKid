@@ -7,38 +7,42 @@ public class instanciarA : MonoBehaviour
     int con = 0;
 
     List<GameObject> invocar = new List<GameObject>();
+    public List<string> omnivoros;
+    public List<string> carnivoros;
+    public List<string> vegetarianos;
     GameObject animales;
     string box;
 
     private void Start()
     {
-
+        
     }
     /*Funcion que instancia con la ayuda de los parametros "x":posicion en x, "y":posicion en y, 
       "animal":nombre del animal a instanciar, "caja":En donde se hara el drop*/
     public void CrearA(float x, float y, string animal, string caja)
     {
-
-
-        Debug.Log("Estoy aqui");
+        
         if (caja == "omnivoro")
         {
-            Debug.Log("Estoy aqui");
+            Debug.Log(caja);
             box = "omnivoro";
             animales = GameObject.Find(box);
             invocar.Add(Instantiate(Resources.Load(string.Concat("Prefabs/Abstraccion/", animal))) as GameObject);
+            
         }
         else if (caja == "carnivoro")
         {
             box = "carnivoro";
             animales = GameObject.Find(box);
             invocar.Add(Instantiate(Resources.Load(string.Concat("Prefabs/Abstraccion/", animal))) as GameObject);
+            
         }
         else if (caja == "vegetariano")
         {
             box = "vegetariano";
             animales = GameObject.Find(box);
             invocar.Add(Instantiate(Resources.Load(string.Concat("Prefabs/Abstraccion/", animal))) as GameObject);
+            
         }
 
 

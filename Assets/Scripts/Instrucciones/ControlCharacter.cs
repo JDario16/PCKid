@@ -95,7 +95,10 @@ public class ControlCharacter : MonoBehaviour {
             }
 
             cont++;
+            if (cont == movimientos.Count)
+                GameObject.Find("CameraGameOver").GetComponent<CameraGameOver>().CameraChange(0);
         }
+        
     }
 
 }

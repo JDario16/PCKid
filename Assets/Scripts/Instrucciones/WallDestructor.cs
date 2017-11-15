@@ -17,6 +17,8 @@ public class WallDestructor : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Player") {
             GameObject.Find("Pacman").GetComponent<ControlCharacter>().StopAllCoroutines();
-		}
+
+            GameObject.Find("CameraGameOver").GetComponent<CameraGameOver>().CameraChange(0);
+        }
 	}
 }
